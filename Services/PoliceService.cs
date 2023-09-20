@@ -39,6 +39,16 @@ namespace Services
             return result.OrderBy(pc => pc.Id).ToList();
         }
 
+        public PoliceCar UpdatePoliceCarStatus(int id, string status)
+        {
+            var policeCar = policeCars.FirstOrDefault(pc => pc.Id == id);
+            if (policeCar == null)
+                throw new Exception("Police car not found");
+
+            policeCar.Status = status;
+            return policeCar;
+        }
+
         public PoliceCar UpdatePoliceCarMission(int id, string mission)
         {
             var policeCar = policeCars.FirstOrDefault(pc => pc.Id == id);

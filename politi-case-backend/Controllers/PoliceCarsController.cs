@@ -30,6 +30,12 @@ namespace politi_case_backend.Controllers
             return await politiService.GetPoliceCar(Id);
         }
 
+        [HttpPut("{Id}/Status")]
+        public PoliceCar PutPoliceCar(int Id, [FromBody] string status)
+        {
+            return politiService.UpdatePoliceCarStatus(Id, status);
+        }
+
         [HttpPut("{Id}/Mission")]
         public PoliceCar PutPoliceCarMission(int Id, [FromBody] string mission)
         {
