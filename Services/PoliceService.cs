@@ -58,5 +58,12 @@ namespace Services
             policeCar.Mission = mission;
             return policeCar;
         }
+
+        public async Task<PoliceCar> AddPoliceCar(PoliceCar policeCar)
+        {
+            policeCars.Add(policeCar);
+            policeCar.Id = policeCars.Max(pc => pc.Id) + 1;
+            return policeCar;
+        }
     }
 }

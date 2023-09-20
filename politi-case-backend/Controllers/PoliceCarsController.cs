@@ -41,5 +41,18 @@ namespace politi_case_backend.Controllers
         {
             return politiService.UpdatePoliceCarMission(Id, mission);
         }
+
+        [HttpPost] public async Task<ActionResult<PoliceCar>> PostPoliceCar([FromBody] PoliceCar policeCar)
+        {
+            try
+            {
+                var createdPoliceCar = await politiService.AddPoliceCar(policeCar);
+                return CreatedAtAction(nameof(GetPoliceCar), new { Id = createdPoliceCar.Id }, createdPoliceCar);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
