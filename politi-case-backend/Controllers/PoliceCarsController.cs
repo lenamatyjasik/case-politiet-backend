@@ -22,5 +22,12 @@ namespace politi_case_backend.Controllers
 
             return await politiService.GetPoliceCars(status: status);
         }
+
+        [HttpGet("{Id}")]
+        public async Task<PoliceCar?> GetPoliceCar(int Id)
+        {
+
+            return await politiService.GetPoliceCar(Id);
+        }
     }
 }
