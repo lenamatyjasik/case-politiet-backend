@@ -54,5 +54,19 @@ namespace politi_case_backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete("{Id}")] public async Task<ActionResult> DeletePoliceCar(int Id)
+        {
+            try
+            {
+                await politiService.DeletePoliceCar(Id);
+                return Ok("Police car deleted successfully");
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
+
     }
 }

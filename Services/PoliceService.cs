@@ -65,5 +65,18 @@ namespace Services
             policeCar.Id = policeCars.Max(pc => pc.Id) + 1;
             return policeCar;
         }
+
+        public async Task DeletePoliceCar(int id)
+        {
+            var policeCar = policeCars.FirstOrDefault(pc => pc.Id == id);
+            if (policeCar == null)
+                throw new Exception("Police car not found");
+
+            policeCars.Remove(policeCar);
+        }
+
+
+
+
     }
 }
