@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{22647CA1-50E3-4B2C-9317-25DCDC103D5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "case-politiet-backend.Tests", "case-politiet-backend.Tests\case-politiet-backend.Tests.csproj", "{D8D00E59-B344-4A0D-8C8C-3653A2A07120}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "case-politiet-backend-test", "case-politiet-backend-test\case-politiet-backend-test.csproj", "{965DAFA8-438D-48FA-9BB8-C03A1F4AADA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{22647CA1-50E3-4B2C-9317-25DCDC103D5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22647CA1-50E3-4B2C-9317-25DCDC103D5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22647CA1-50E3-4B2C-9317-25DCDC103D5C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8D00E59-B344-4A0D-8C8C-3653A2A07120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8D00E59-B344-4A0D-8C8C-3653A2A07120}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8D00E59-B344-4A0D-8C8C-3653A2A07120}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8D00E59-B344-4A0D-8C8C-3653A2A07120}.Release|Any CPU.Build.0 = Release|Any CPU
+		{965DAFA8-438D-48FA-9BB8-C03A1F4AADA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{965DAFA8-438D-48FA-9BB8-C03A1F4AADA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{965DAFA8-438D-48FA-9BB8-C03A1F4AADA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{965DAFA8-438D-48FA-9BB8-C03A1F4AADA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -13,9 +13,9 @@ namespace Services
 
         private static List<PoliceCar>? policeCars;
 
-        public PoliceService()
+        public PoliceService(HttpClient client = null)
         {
-            _client = new HttpClient();
+            _client = client ?? new HttpClient();
             _client.BaseAddress = new Uri("https://politibiler-c6e73455ac85.herokuapp.com");
             policeCars ??= _client.GetFromJsonAsync<List<PoliceCar>>("").Result ?? new List<PoliceCar>();
             policeCars = policeCars.OrderBy(pc => pc.Id).ToList();
