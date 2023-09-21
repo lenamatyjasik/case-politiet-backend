@@ -13,10 +13,7 @@ namespace case_politiet_backend_test
         // Test the constructor to ensure that it initializes the _client field and fetches the list of PoliceCar objects correctly.
         public void Constructor_InitializesCorrectly()
         {
-            // Arrange
             var mockHttpClient = new Mock<HttpClient>();
-
-            // Act
             var service = new PoliceService(mockHttpClient.Object);
 
             // Use reflection to get the value of the _client field
@@ -33,7 +30,26 @@ namespace case_politiet_backend_test
             Xunit.Assert.True(policeCarsValue.Count > 0);  // Assuming the external service always returns some cars
         }
 
-       
+        [TestMethod]
+        // Test if retrieves the correct PoliceCar based on the provided ID.
+        public async Task GetPoliceCar_ReturnsCorrectCar()
+        {
+            // Arrange
+            var mockHttpClient = new Mock<HttpClient>();
+            var service = new PoliceService(mockHttpClient.Object);
+
+            // Using reflection to add a sample car to the policeCars static list
+            var policeCarsField = typeof(PoliceService).GetField("policeCars", BindingFlags.Static | BindingFlags.NonPublic);
+            var policeCarsList = policeCarsField.GetValue(null) as List<PoliceCar>;
+            var sampleCar = new PoliceCar { Id = 1 };
+            policeCarsList.Add(sampleCar);
+
+            // Act
+            var retrievedCar = await service.GetPoliceCar(1);
+
+            // Assert
+            Xunit.Assert.Equal(sampleCar.Id, retrievedCar.Id);
+        }
 
         [TestMethod]
         // Test if retrieves the correct list of PoliceCar objects based on the provided criteria.
@@ -49,7 +65,36 @@ namespace case_politiet_backend_test
             // Assert
             Xunit.Assert.All(cars, car => Xunit.Assert.Equal("Available", car.Status));
         }
-              
+
+        [TestMethod]
+        // Test if updates status for a specific PoliceCar by its ID.
+        public void UpdatePoliceCarStatus_UpdatesCorrectly()
+        {
+            // Arrange
+            var mockHttpClient = new Mock<HttpClient>();
+            var service = new PoliceService(mockHttpClient.Object);
+
+            // Act
+            var updatedCar = service.UpdatePoliceCarStatus(1, "In Repair");
+
+            // Assert
+            Xunit.Assert.Equal("In Repair", updatedCar.Status);
+        }
+
+        [TestMethod]
+        // Test if updates status for a specific PoliceCar by its ID.
+        public void UpdatePoliceCarMission_UpdatesCorrectly()
+        {
+            // Arrange
+            var mockHttpClient = new Mock<HttpClient>();
+            var service = new PoliceService(mockHttpClient.Object);
+
+            // Act
+            var updatedCar = service.UpdatePoliceCarMission(1, "New Mission");
+
+            // Assert
+            Xunit.Assert.Equal("New Mission", updatedCar.Mission);
+        }
 
         [TestMethod]
         // Test if new PoliceCar is added correctly and is assigned new ID.
@@ -85,8 +130,5 @@ namespace case_politiet_backend_test
             var retrievedCar = await service.GetPoliceCar(1);
             Xunit.Assert.Null(retrievedCar);
         }
-
-
-
     }
 }

@@ -7,7 +7,6 @@ namespace case_politiet_backend_test
     [TestClass]
     public class PoliceCarTests
     {
-      
         [TestMethod]
         public void Serialization_Deserialization_WorksCorrectly()
         {
